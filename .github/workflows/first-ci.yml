@@ -1,14 +1,28 @@
-name: My First CI
+name: .NET CI
 
 on:
   push:
+    branches: [ "main" ] # اگر شاخه اصلی شما master است، این را به master تغییر دهید
+  pull_request:
     branches: [ "main" ]
 
 jobs:
-  say-hello:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run a simple script
-        run: echo "Hello from GitHub Actions! My CI is working."
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # ⚠️ مهم: این را به نسخه .NET مورد استفاده پروژه خود تغییر دهید (مثلاً 6.0.x یا 7.0.x)
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
