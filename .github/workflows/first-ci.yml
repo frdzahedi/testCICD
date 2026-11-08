@@ -2,9 +2,9 @@ name: .NET CI
 
 on:
   push:
-    branches: [ "main" ] # اگر شاخه اصلی شما master است، این را به master تغییر دهید
+    branches: [ "master" ] # اگر شاخه اصلی شما master است، این را به master تغییر دهید
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
