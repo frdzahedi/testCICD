@@ -2,16 +2,12 @@
 
 public class SonarModel
 {
-    public void TestMethod()
-    {
-        int unusedNumber = 42;
-
-        try
+        public void ConnectToDatabase()
         {
+            // SonarQube باید این را به عنوان "اعتبارنامه hardcoded" تشخیص دهد (S2068)
+            string connectionString = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=SuperSecret123!;";
 
-        }catch
-        (Exception ex)
-        {
-        }   
+            // کد زیر صرفاً برای جلوگیری از هشدار "متغیر استفاده نشده" است و روی خود آسیب‌پذیری تأثیری ندارد
+            System.Console.WriteLine(connectionString);
+        }
     }
-}
