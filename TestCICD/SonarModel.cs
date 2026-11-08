@@ -1,6 +1,6 @@
 ﻿namespace TestCICD;
 
-public class SonarTest
+public class SonarModel
 {
     public void TestMethod()
     {
